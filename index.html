@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+</head>
+	<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+	  var socket = io.connect('localhost');
+	  socket.on('news', function (data) {
+	    //console.log(data);
+          $('.block').css('left', data.distance*5 );
+	    socket.emit('returnEvent', { my: 'data' });
+	  });
+	</script>
+<style>
+	.block {
+		position: absolute;
+		top: 0;
+		width: 100px;
+		height: 100px;
+		background: #ff0000;
+	}
+</style>
+<body>
+<div class="block">
+
+</div>
+</body>
+</html>
